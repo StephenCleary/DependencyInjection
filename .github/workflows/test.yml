@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Dump context
+      env:
+        CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "Context: $CONTEXT"
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Test
+      uses: actions/github-script@v1.1.0
+      with:
+        script: |
+          const glob = require('@actions/glob');
+          const patterns = ['**/cs'];
+          const globber = await glob.create(patterns.join('\n'));
+          return await globber.glob();
