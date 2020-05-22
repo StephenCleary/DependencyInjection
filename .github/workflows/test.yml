@@ -21,10 +21,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Test
-      uses: actions/github-script@v1.1.0
+      uses: StephenCleary/glob@v1
       with:
-        script: |
-          const glob = github.glob;
-          const patterns = ['**/cs'];
-          const globber = await glob.create(patterns.join('\n'));
-          return await globber.glob();
+        patterns: |
+          *.cs
