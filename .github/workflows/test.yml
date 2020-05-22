@@ -24,7 +24,7 @@ jobs:
       uses: actions/github-script@v1.1.0
       with:
         script: |
-          const glob = require('@actions/glob');
+          const glob = github.glob;
           const patterns = ['**/cs'];
           const globber = await glob.create(patterns.join('\n'));
           return await globber.glob();
