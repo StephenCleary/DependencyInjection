@@ -9,7 +9,7 @@ namespace Nito.DependencyInjection
     /// Provides a fluent API for constructing types.
     /// Each instance builder has a collection of injected arguments, which are used along with its service provider to create an instance when <see cref="Build{TService}"/> is invoked.
     /// </summary>
-    public class InstanceBuilder : IInstanceBuilder
+    public sealed class InstanceBuilder : IInstanceBuilder
     {
         private readonly IServiceProvider _provider;
         private readonly IServiceCollection _services;
@@ -22,14 +22,15 @@ namespace Nito.DependencyInjection
         /// <param name="services">The service collection.</param>
         public InstanceBuilder(IServiceProvider provider, IServiceCollection services)
         {
-            _provider = provider;
-            _services = services;
+            _provider = provider ?? throw new ArgumentNullException(nameof(provider));
+            _services = services ?? throw new ArgumentNullException(nameof(services));
             _injectedArguments = new List<object>();
         }
 
         /// <inheritdoc />
         public InstanceBuilder With(params object[] injectedArguments)
         {
+            _ = injectedArguments ?? throw new ArgumentNullException(nameof(injectedArguments));
             _injectedArguments.AddRange(injectedArguments);
             return this;
         }
@@ -48,6 +49,10 @@ namespace Nito.DependencyInjection
         /// <inheritdoc />
         public TService Build<TService>() => ActivatorUtilities.CreateInstance<TService>(_provider, _injectedArguments.ToArray());
 
-        object IInstanceBuilder.Build(Type instanceType) => ActivatorUtilities.CreateInstance(_provider, instanceType, _injectedArguments.ToArray());
+        object IInstanceBuilder.Build(Type instanceType)
+        {
+            _ = instanceType ?? throw new ArgumentNullException(nameof(instanceType));
+            return ActivatorUtilities.CreateInstance(_provider, instanceType, _injectedArguments.ToArray());
+        }
     }
 }

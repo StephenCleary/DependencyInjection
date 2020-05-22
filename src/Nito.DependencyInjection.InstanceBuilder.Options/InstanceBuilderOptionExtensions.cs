@@ -16,8 +16,11 @@ namespace Nito.DependencyInjection
         /// <param name="builder">The instance builder.</param>
         /// <param name="name">The name of the options.</param>
         public static InstanceBuilder WithNamedOptions<TOptions>(this IInstanceBuilder builder, string name)
-            where TOptions : class, new() =>
-            builder.With(new OptionsWrapper<TOptions>(builder.Provider.GetRequiredService<IOptionsMonitor<TOptions>>().Get(name)));
+            where TOptions : class, new()
+        {
+            _ = builder ?? throw new ArgumentNullException(nameof(builder));
+            return builder.With(new OptionsWrapper<TOptions>(builder.Provider.GetRequiredService<IOptionsMonitor<TOptions>>().Get(name)));
+        }
 
         private sealed class OptionsWrapper<T> : IOptions<T>
             where T : class, new()

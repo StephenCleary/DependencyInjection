@@ -1,0 +1,4 @@
+[*.cs]
+
+# CA1716: Identifiers should not match keywords
+dotnet_diagnostic.CA1716.severity = silent

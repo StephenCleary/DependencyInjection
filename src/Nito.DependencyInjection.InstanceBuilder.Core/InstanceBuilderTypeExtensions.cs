@@ -24,8 +24,12 @@ namespace Nito.DependencyInjection
         /// <typeparam name="T">The type of instance to create.</typeparam>
         /// <param name="builder">The instance builder.</param>
         /// <param name="factoryFunctions">A series of factory functions.</param>
-        public static InstanceBuilder WithMany<T>(this IInstanceBuilder builder, params Func<InstanceBuilder, T>[] factoryFunctions) =>
-            builder.With(factoryFunctions.Select(factoryFunction => factoryFunction(builder.Copy())).ToList());
+        public static InstanceBuilder WithMany<T>(this IInstanceBuilder builder, params Func<InstanceBuilder, T>[] factoryFunctions)
+        {
+            _ = builder ?? throw new ArgumentNullException(nameof(builder));
+            _ = factoryFunctions ?? throw new ArgumentNullException(nameof(factoryFunctions));
+            return builder.With(factoryFunctions.Select(factoryFunction => factoryFunction(builder.Copy())).ToList());
+        }
 
         /// <summary>
         /// Injects multiple instances of <typeparamref name="T"/> for this instance builder, one per item in the source sequence, via the factory function passed to this method.
@@ -35,7 +39,12 @@ namespace Nito.DependencyInjection
         /// <param name="builder">The instance builder.</param>
         /// <param name="source">The source sequence.</param>
         /// <param name="function">The factory function that transforms a source sequence item to an instance of <typeparamref name="T"/>.</param>
-        public static InstanceBuilder WithMany<TSource, T>(this IInstanceBuilder builder, IEnumerable<TSource> source, Func<InstanceBuilder, TSource, T> function) =>
-            builder.With(source.Select(x => function(builder.Copy(), x)).ToList());
+        public static InstanceBuilder WithMany<TSource, T>(this IInstanceBuilder builder, IEnumerable<TSource> source, Func<InstanceBuilder, TSource, T> function)
+        {
+            _ = builder ?? throw new ArgumentNullException(nameof(builder));
+            _ = source ?? throw new ArgumentNullException(nameof(source));
+            _ = function ?? throw new ArgumentNullException(nameof(function));
+            return builder.With(source.Select(x => function(builder.Copy(), x)).ToList());
+        }
     }
 }
