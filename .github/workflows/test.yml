@@ -24,4 +24,4 @@ jobs:
       uses: StephenCleary/glob@v1.0.0-pre03
       with:
         patterns: |
-          *.cs
+          **/*.cs
