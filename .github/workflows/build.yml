@@ -18,9 +18,22 @@ jobs:
       run: |
         echo "Context: $Env:CONTEXT"
 
+    - name: Determine cache fallbacks
+      if: github.event_name != 'push'
+      id: cache_fallbacks
+      run: |
+        echo "::set-output name=nuget::nuget-"
+
     - name: Checkout
       uses: actions/checkout@v2
       
+    - name: Cache nuget
+      uses: actions/cache@v1
+      with:
+        path: ~/.nuget/packages
+        key: nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: ${{ steps.cache_fallbacks.outputs.nuget }}
+
     - name: Build
       run: |
         dotnet build --configuration Release
