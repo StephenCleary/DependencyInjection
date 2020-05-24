@@ -16,7 +16,7 @@ jobs:
       env:
         CONTEXT: ${{ toJson(github) }}
       run: |
-        echo "Context: $CONTEXT"
+        echo "Context: $Env:CONTEXT"
 
     - name: Checkout
       uses: actions/checkout@v2
