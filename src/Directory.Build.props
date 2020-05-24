@@ -4,6 +4,12 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_REF)'=='' or !$(GITHUB_REF.StartsWith('refs/tags/v'))">
+    <Version>1.0.0-dev</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_REF)'!='' and $(GITHUB_REF.StartsWith('refs/tags/v'))">
+    <Version>$(GITHUB_REF.Replace('refs/tags/v', ''))</Version>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>

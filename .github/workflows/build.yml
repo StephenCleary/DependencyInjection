@@ -1,10 +1,8 @@
-name: Test
+name: Build
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  - push
+  - pull_request
 
 jobs:
   build:
@@ -20,8 +18,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Test
-      uses: StephenCleary/glob@v1.0.0-pre04
-      with:
-        patterns: |
-          **/*.cs
+    - name: Build
+      run: |
+        dotnet build --configuration Release
+        dotnet test --configuration Release --no-build
+        dotnet pack --configuration Release --no-build
