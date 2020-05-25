@@ -5,6 +5,7 @@ on:
   - pull_request
 
 env:
+  CI: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
