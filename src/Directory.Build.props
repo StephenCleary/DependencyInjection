@@ -1,14 +1,22 @@
 <Project>
   <PropertyGroup>
+    <RootNamespace>Nito.DependencyInjection</RootNamespace>
+
+    <Description>Helper types for advanced .NET Core Dependency Injection</Description>
+    <PackageTags>dependency-injection</PackageTags>
+
+    <PackageIcon>icon.png</PackageIcon>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <RootNamespace>Nito.DependencyInjection</RootNamespace>
     <Authors>Stephen Cleary</Authors>
-    <Description>Helper types for advanced .NET Core Dependency Injection</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>dependency-injection</PackageTags>
-    <PackageIcon>icon.png</PackageIcon>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_REF)'=='' or !$(GITHUB_REF.StartsWith('refs/tags/v'))">
     <Version>1.0.0-dev</Version>
@@ -16,10 +24,14 @@
   <PropertyGroup Condition="'$(GITHUB_REF)'!='' and $(GITHUB_REF.StartsWith('refs/tags/v'))">
     <Version>$(GITHUB_REF.Replace('refs/tags/v', ''))</Version>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 </Project>
