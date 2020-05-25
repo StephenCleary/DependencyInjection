@@ -4,11 +4,12 @@
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoWarn>NU5128</NoWarn>
+    <IncludeSymbols>false</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Nito.DependencyInjection.InstanceBuilder.Core\Nito.DependencyInjection.InstanceBuilder.Core.csproj" />
     <ProjectReference Include="..\Nito.DependencyInjection.InstanceBuilder.Options\Nito.DependencyInjection.InstanceBuilder.Options.csproj" />
   </ItemGroup>
-  
+
 </Project>
