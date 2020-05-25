@@ -1,4 +1,4 @@
-<Project>
+<Project InitialTargets="Test">
   <!-- Project-specific settings -->
   <PropertyGroup>
     <RootNamespace>Nito.DependencyInjection</RootNamespace>
@@ -23,6 +23,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+<Target Name="Test">
+  <Message Text="CI: $(ContinuousIntegrationBuild)" Importance="High" />
+</Target>
 
   <!-- Package settings -->
   <PropertyGroup>
