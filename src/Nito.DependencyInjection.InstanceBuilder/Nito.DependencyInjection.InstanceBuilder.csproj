@@ -10,8 +10,5 @@
     <ProjectReference Include="..\Nito.DependencyInjection.InstanceBuilder.Core\Nito.DependencyInjection.InstanceBuilder.Core.csproj" />
     <ProjectReference Include="..\Nito.DependencyInjection.InstanceBuilder.Options\Nito.DependencyInjection.InstanceBuilder.Options.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
-  </ItemGroup>
+  
 </Project>

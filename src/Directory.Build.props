@@ -1,28 +1,18 @@
 <Project>
+  <!-- Project-specific settings -->
   <PropertyGroup>
     <RootNamespace>Nito.DependencyInjection</RootNamespace>
-
     <Description>Helper types for advanced .NET Core Dependency Injection</Description>
     <PackageTags>dependency-injection</PackageTags>
-
-    <PackageIcon>icon.png</PackageIcon>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
     <Authors>Stephen Cleary</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(GITHUB_REF)'=='' or !$(GITHUB_REF.StartsWith('refs/tags/v'))">
-    <Version>1.0.0-dev</Version>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(GITHUB_REF)'!='' and $(GITHUB_REF.StartsWith('refs/tags/v'))">
-    <Version>$(GITHUB_REF.Replace('refs/tags/v', ''))</Version>
+
+  <!-- Project quality settings -->
+  <PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(CI)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -32,6 +22,42 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <!-- Package settings -->
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/$(GITHUB_REPOSITORY)</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Icon file -->
+  <PropertyGroup>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <!-- Source debugging -->
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup Condition="'$(DevVersion)'==''">
+    <DevVersion>1.0.0</DevVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_REF)'=='' or !$(GITHUB_REF.StartsWith('refs/tags/v'))">
+    <Version>$(DevVersion)-dev</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_REF)'!='' and $(GITHUB_REF.StartsWith('refs/tags/v'))">
+    <Version>$(GITHUB_REF.Replace('refs/tags/v', ''))</Version>
+  </PropertyGroup>
+  
 </Project>
