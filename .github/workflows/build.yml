@@ -39,3 +39,8 @@ jobs:
         dotnet build --configuration Release
         dotnet test --configuration Release --no-build
         dotnet pack --configuration Release --no-build
+
+    - name: Publish
+      if: startsWith(github.event.ref, 'refs/tags/v')
+      run: |
+        dotnet nuget push **/*.nupkg
