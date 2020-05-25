@@ -4,6 +4,11 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <RootNamespace>Nito.DependencyInjection</RootNamespace>
+    <Authors>Stephen Cleary</Authors>
+    <Description>Helper types for advanced .NET Core Dependency Injection</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>dependency-injection</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_REF)'=='' or !$(GITHUB_REF.StartsWith('refs/tags/v'))">
     <Version>1.0.0-dev</Version>

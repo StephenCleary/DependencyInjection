@@ -1,6 +1,14 @@
+![Logo](src/logo.png)
+
 # Nito.DependencyInjection.InstanceBuilder
 
 `Nito.DependencyInjection.InstanceBuilder` is a convenient API for .NET Core's Dependency Injection, making some scenarios easier to do than the API normally provides.
+
+Supports `netstandard2.0` (including .NET 5.0 Prerelease 4, .NET Core 2.0, .NET Framework 4.6.1, Mono 5.4, Xamarin.iOS 10.14, Xamarin.Mac 3.8, Xamarin.Android 8.0, UWP 10.0.16299, and Unity 2018.1).
+
+[![NuGet Pre Release](https://img.shields.io/nuget/vpre/Nito.DependencyInjection.InstanceBuilder.svg)](https://www.nuget.org/packages/Nito.DependencyInjection.InstanceBuilder/)
+[![netstandard 2.0](https://img.shields.io/badge/netstandard-2.0-brightgreen.svg)](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)
+[![Build](https://github.com/StephenCleary/DependencyInjection/workflows/Build/badge.svg)](https://github.com/StephenCleary/DependencyInjection/actions?query=workflow%3ABuild)
 
 # Usage
 
