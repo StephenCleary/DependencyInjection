@@ -16,6 +16,8 @@ Fluent API methods include:
 
 As a reminder, `InstanceBuilder` injects constructor arguments either from instance-specific values (`With*`) *or* pulling them from the service provider. So this means that unspecified dependencies (including dependencies of dependencies, etc) are all resolved through the service provider.
 
+`InstanceBuilder` supports singleton and scoped lifetimes. *Technically* it supports transient lifetimes as well, but I'm not aware of any use case for transient lifetimes with `InstanceBuilder`. If you have one, please open an issue and let me know!
+
 # Use Cases
 
 ## Multiple Instances, Different Options
