@@ -1,4 +1,4 @@
-![Logo](src/logo.png)
+![Logo](src/icon.png)
 
 # Nito.DependencyInjection.InstanceBuilder
 
