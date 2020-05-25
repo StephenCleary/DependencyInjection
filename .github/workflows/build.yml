@@ -52,4 +52,4 @@ jobs:
     - name: Publish
       if: startsWith(github.event.ref, 'refs/tags/v')
       run: |
-        dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json
+        dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
