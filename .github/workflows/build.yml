@@ -31,7 +31,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.nuget/packages
-        key: nuget-${{ hashFiles('**/packages.lock.json') }}
+        key: nuget-${{ hashFiles('**/*.csproj') }}-${{ hashFiles('**/*.props') }}
         restore-keys: ${{ steps.cache_fallbacks.outputs.nuget }}
 
     - name: Build
@@ -39,6 +39,14 @@ jobs:
         dotnet build --configuration Release
         dotnet test --configuration Release --no-build
         dotnet pack --configuration Release --no-build
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: nuget-packages
+        path: |
+          **/*.nupkg
+          **/*.snupkg
 
     - name: Publish
       if: startsWith(github.event.ref, 'refs/tags/v')
