@@ -21,12 +21,5 @@ namespace Nito.DependencyInjection
             _ = builder ?? throw new ArgumentNullException(nameof(builder));
             return builder.With(new OptionsWrapper<TOptions>(builder.Provider.GetRequiredService<IOptionsMonitor<TOptions>>().Get(name)));
         }
-
-        private sealed class OptionsWrapper<T> : IOptions<T>
-            where T : class, new()
-        {
-            public OptionsWrapper(T value) => Value = value;
-            public T Value { get; }
-        }
     }
 }
