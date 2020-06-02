@@ -19,6 +19,19 @@ namespace Nito.DependencyInjection
     public static class InstanceBuilderTypeExtensions
     {
         /// <summary>
+        /// Injects a single instance of <typeparamref name="T"/> for this instance builder, using the factory function passed to this method.
+        /// </summary>
+        /// <typeparam name="T">The type of instance to create.</typeparam>
+        /// <param name="builder">The instance builder.</param>
+        /// <param name="factoryFunction">A factory function.</param>
+        public static InstanceBuilder With<T>(this IInstanceBuilder builder, Func<InstanceBuilder, T> factoryFunction)
+        {
+            _ = builder ?? throw new ArgumentNullException(nameof(builder));
+            _ = factoryFunction ?? throw new ArgumentNullException(nameof(factoryFunction));
+            return builder.With(factoryFunction(builder.Copy())!);
+        }
+
+        /// <summary>
         /// Injects multiple instances of <typeparamref name="T"/> for this instance builder, one per factory function passed to this method.
         /// </summary>
         /// <typeparam name="T">The type of instance to create.</typeparam>
