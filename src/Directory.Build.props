@@ -1,6 +1,7 @@
 <Project>
   <!-- Project-specific settings -->
   <PropertyGroup>
+    <VersionPrefix>1.0.0-pre04</VersionPrefix>
     <RootNamespace>Nito.DependencyInjection</RootNamespace>
     <Description>Helper types for advanced .NET Core Dependency Injection</Description>
     <PackageTags>dependency-injection</PackageTags>
@@ -50,14 +51,8 @@
   </ItemGroup>
 
   <!-- Versioning -->
-  <PropertyGroup Condition="'$(DevVersion)'==''">
-    <DevVersion>1.0.0</DevVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(GITHUB_REF)'=='' or !$(GITHUB_REF.StartsWith('refs/tags/v'))">
-    <Version>$(DevVersion)-dev</Version>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(GITHUB_REF)'!='' and $(GITHUB_REF.StartsWith('refs/tags/v'))">
-    <Version>$(GITHUB_REF.Replace('refs/tags/v', ''))</Version>
+  <PropertyGroup Condition="'$(CI)'!='true'">
+    <VersionSuffix>dev</VersionSuffix>
   </PropertyGroup>
   
 </Project>
