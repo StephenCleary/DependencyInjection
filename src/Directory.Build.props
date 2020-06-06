@@ -25,13 +25,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <!-- Linux builds targeting full framework -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-
   <!-- Package settings -->
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/$(GITHUB_REPOSITORY)</PackageProjectUrl>
