@@ -30,7 +30,11 @@ jobs:
 
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ['3.1.300', '5.0.0-preview.4.20251.6']
+        dotnet-version: '3.1.300'
+
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.0-preview.4.20251.6'
 
     # https://github.com/actions/setup-dotnet/issues/25
     - name: .net SxS
