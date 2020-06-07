@@ -51,9 +51,9 @@
   </ItemGroup>
 
   <!-- Include reference assemblies -->
-  <!-- <ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup> -->
+  </ItemGroup>
 
   <!-- Versioning -->
   <PropertyGroup Condition="'$(CI)'!='true'">

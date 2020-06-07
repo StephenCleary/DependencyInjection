@@ -10,7 +10,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
 
     - name: Dump context
@@ -27,19 +27,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.300'
-
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.0-preview.4.*'
-
-    # https://github.com/actions/setup-dotnet/issues/25
-    - name: .net SxS
-      run: |
-        rsync -a ${DOTNET_ROOT/3.1.300/5.0.0-preview.4.*}/* $DOTNET_ROOT/
 
     - name: Cache nuget
       uses: actions/cache@v1
