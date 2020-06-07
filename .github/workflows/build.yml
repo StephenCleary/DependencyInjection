@@ -38,7 +38,7 @@ jobs:
     - name: Build
       run: |
         dotnet build --configuration Release
-        dotnet test --configuration Release --no-build
+        dotnet test --configuration Release --no-build --collect:"Unit Test Code Coverage"
         dotnet pack --configuration Release --no-build
 
     - name: Upload artifacts
