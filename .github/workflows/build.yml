@@ -30,7 +30,12 @@ jobs:
 
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.300'
+        dotnet-version: ['3.1.300', '5.0.0-preview.4.20251.6']
+
+    # https://github.com/actions/setup-dotnet/issues/25
+    - name: .net SxS
+      run: |
+        rsync -a ${DOTNET_ROOT/3.1.300/5.0.0-preview.4.20251.6}/* $DOTNET_ROOT/
 
     - name: Cache nuget
       uses: actions/cache@v1
