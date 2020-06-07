@@ -49,13 +49,6 @@ jobs:
           **/*.nupkg
           **/*.snupkg
 
-    - name: Upload test result artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: |
-          **/TestResults/**/*
-
     - name: Upload code coverage
       uses: codecov/codecov-action@v1
 
