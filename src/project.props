@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <VersionPrefix>1.0.0-pre04</VersionPrefix>
+    <RootNamespace>Nito.DependencyInjection</RootNamespace>
+    <Description>Helper types for advanced .NET Core Dependency Injection</Description>
+    <PackageTags>dependency-injection</PackageTags>
+    <Authors>Stephen Cleary</Authors>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+</Project>
