@@ -5,6 +5,5 @@
     <Description>Helper types for advanced .NET Core Dependency Injection</Description>
     <PackageTags>dependency-injection</PackageTags>
     <Authors>Stephen Cleary</Authors>
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>
