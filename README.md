@@ -12,7 +12,7 @@ Supports `netstandard2.0` (including .NET 5.0 Prerelease 4, .NET Core 2.0, .NET 
 
 # Usage
 
-`InstanceBuilder` is a fluent API for factory methods which can pull some arguments specific for that instance, and pull other arguments out of the service provider. To use `InstanceBuilder`, create an instance builder by passing the service provider and the service collection. E.g., if you wanted to use `InstanceBuilder` to build a singleton instance, you would start with `service.AddSingleton(provider => new InstanceBuilder(provider, services).` and then use the fluent API from there.
+`InstanceBuilder` is a fluent API for factory methods which can pull some arguments specific for that instance, and pull other arguments out of the service provider. To use `InstanceBuilder`, create an instance builder by passing the service provider and the service collection. E.g., if you wanted to use `InstanceBuilder` to build a singleton instance, you would start with `services.AddSingleton(provider => new InstanceBuilder(provider, services).` and then use the fluent API from there.
 
 Fluent API methods include:
 
